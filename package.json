@@ -1,0 +1,36 @@
+{
+  "name": "react-hooks-validation",
+  "version": "1.0.0",
+  "description": "Simple form validation for your React Hooks project.",
+  "main": "dist/react-hooks-validation.js",
+  "repository": "https://github.com/ertanhasani/react-hooks-validation",
+  "author": "Ertan Hasani",
+  "license": "ISC",
+  "scripts": {
+    "prepublishOnly": "babel ./src --out-dir ./dist -s inline"
+  },
+  "keywords": [
+    "react",
+    "hooks",
+    "validation",
+    "hook",
+    "form",
+    "valid",
+    "reactjs"
+  ],
+  "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/preset-react": "^7.0.0",
+    "moment": "^2.24.0",
+    "react-dom": "^16.8.6"
+  },
+  "dependencies": {},
+  "peerDependencies": {
+    "react": "^16.8.6"
+  },
+  "files": [
+    "dist/*"
+  ]
+}
