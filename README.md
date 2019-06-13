@@ -4,6 +4,8 @@
 
 `npm i react-hooks-validation`
 
+> You should have `momentjs` installed in order to make it work. `momentjs` is required because it handles date parsing and formatting. You can install it by: `npm i moment`.
+
 ## How to use it
 
 ### [DEMO](https://codesandbox.io/s/lingering-moon-t6w36)

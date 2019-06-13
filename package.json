@@ -1,6 +1,6 @@
 {
   "name": "react-hooks-validation",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Simple form validation for your React Hooks project.",
   "main": "dist/react-hooks-validation.js",
   "repository": "https://github.com/ertanhasani/react-hooks-validation",
