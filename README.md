@@ -6,6 +6,8 @@
 
 ## How to use it
 
+### [DEMO](https://codesandbox.io/s/lingering-moon-t6w36)
+
 ### useValidation(object)
 
 `useValidation(object)` expects an object to be passed in.
