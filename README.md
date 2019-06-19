@@ -67,7 +67,7 @@ function MyClass(){
     }
 
     handleChange({currentTarget: input}){
-        data[input.name] = input.value;
+        data[input.name].onChange(value);
     }
 
     return(
