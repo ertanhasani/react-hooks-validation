@@ -29,12 +29,20 @@ export default function useValidation(object, depended = null) {
     if (object.value) setError(!validate(object));
   }, []);
 
-  object.error = error;
+  if (object.error === null && (object.value !== '' && object.value !== null && object.value !== undefined)) {
+    setError(!validate(object));
+  }
+
+
+  if (object.error != true && !object.required) {
+    object.error = false;
+  }
+  else object.error = error;
 
   return {
     name: object.name,
     value,
-    error,
+    error: object.error,
     onChange,
     required: object.required
   };

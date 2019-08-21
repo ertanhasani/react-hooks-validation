@@ -1,20 +1,20 @@
 import moment from "moment";
 
 function min(value, nr) {
-  return (isNaN(value) ? value.length : value) >= nr;
+  return ('string' === typeof value ? value.length : value) >= nr;
 }
 
 function max(value, nr) {
-  return (isNaN(value) ? value.length : value) <= nr;
+  return ('string' === typeof value ? value.length : value) <= nr;
 }
 
 function required(value) {
-  return !(
-    ("string" === typeof value && value.trim().length === 0) ||
-    value === null ||
-    value === undefined ||
-    value.length === 0
-  );
+  if ("string" === typeof value) {
+    return !(value.trim().length === 0 || value === null || value === undefined || value.length === 0);
+  }
+  else {
+    return !(value === null || value === undefined || value.length === 0)
+  }
 }
 
 function number(value) {
