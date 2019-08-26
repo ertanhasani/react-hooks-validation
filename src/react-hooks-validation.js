@@ -6,12 +6,13 @@ export default function useValidation(object, depended = null) {
     throw new Error(
       "You should add a 'name' property on your object and provide a value for it!"
     );
-  else if (object.value === undefined)
-    throw new Error("You should add a 'value' property on your object!");
   else if (object.contains && !Array.isArray(object.contains))
     throw new Error("'contains' should be an Array!");
   else if (object.containsNot && !Array.isArray(object.containsNot))
     throw new Error("'containsNot' should be an Array!");
+
+  if (object.defaultValue === undefined) object.defaultValue = '';
+  if (object.value === undefined) object.value = object.defaultValue;
 
   const [value, setValue] = useState(object.value);
   const [error, setError] = useState(null);
@@ -24,6 +25,11 @@ export default function useValidation(object, depended = null) {
     setError(!validate(object));
   }
 
+  function reset() {
+    setValue(object.defaultValue);
+    setError(null);
+  }
+
   useEffect(() => {
     object.depend = depended;
     if (object.value) setError(!validate(object));
@@ -32,7 +38,6 @@ export default function useValidation(object, depended = null) {
   if (object.error === null && (object.value !== '' && object.value !== null && object.value !== undefined)) {
     setError(!validate(object));
   }
-
 
   if (object.error != true && !object.required) {
     object.error = false;
@@ -44,7 +49,9 @@ export default function useValidation(object, depended = null) {
     value,
     error: object.error,
     onChange,
-    required: object.required
+    required: object.required,
+    defaultValue: object.defaultValue,
+    reset: reset
   };
 }
 
@@ -60,4 +67,10 @@ export function validateAll(schema) {
   });
   if (err.length > 0) return err;
   return null;
+}
+
+export function reset(schema) {
+  Object.keys(schema).forEach(key => {
+    schema[key].reset();
+  });
 }
